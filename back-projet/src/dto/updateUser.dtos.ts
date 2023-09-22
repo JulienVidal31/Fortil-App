@@ -2,7 +2,7 @@ import { IsEmail, IsOptional, IsString } from "class-validator";
 
 export class UpdateUserDto {
 
-    @IsOptional() // IsEmpty de AddClientDto devient IsOptional car maj de pas forcément tous les éléments
+    @IsOptional()
     @IsString()
     name: string;
 

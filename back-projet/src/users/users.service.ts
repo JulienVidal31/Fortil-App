@@ -14,10 +14,7 @@ export class UsersService {
     {}
 
     async getUsers(): Promise<UsersEntity[]> {
-        return await this.usersRepository.find({
-            withDeleted: true
-        }
-        )
+        return await this.usersRepository.find({})
     }
     
     async addUser(newUser: CreateUserDto): Promise<UsersEntity> {

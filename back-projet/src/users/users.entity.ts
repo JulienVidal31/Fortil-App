@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AnnoncesEntity } from 'src/annonces/annonces.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')
 export class UsersEntity {
@@ -20,5 +21,11 @@ export class UsersEntity {
 
   @Column({ type: 'varchar' })
   role: string;
+
+  @OneToMany( //un user peut etre associé à plusieurs annonces
+  type => AnnoncesEntity,
+  annonces => annonces.id)
+  annonces: AnnoncesEntity[];
+
 
 }

@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 // import { environment } from 'environement';
+import { AnnoncesModule } from './annonces/annonces.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ConfigModule } from '@nestjs/config';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     UsersModule,
+    AnnoncesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

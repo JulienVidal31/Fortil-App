@@ -14,19 +14,19 @@ export class UsersController {
     ) {}
 
     @Get()
-    async getAllClients(): Promise<UsersEntity[]> {
+    async getAllUsers(): Promise<UsersEntity[]> {
         return await this.usersService.getUsers();
     }
 
     @Post('create')
-    async postClient(
+    async postUser(
         @Body() newUser: CreateUserDto
     ): Promise<UsersEntity> {
         return await this.usersService.addUser(newUser);
     }
 
     @Patch('id/:id')
-    async updateClient(
+    async updateUser(
         @Body() newUser: UpdateUserDto,
         @Param('id', ParseIntPipe) id: number //ParseIntPipe : force l'id en int
     ): Promise<UsersEntity> {

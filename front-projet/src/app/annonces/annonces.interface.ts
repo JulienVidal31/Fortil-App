@@ -1,3 +1,5 @@
+import { User } from "../users/users.interface";
+
 export interface Annonce {
     id: number;
     title: string;
@@ -6,5 +8,5 @@ export interface Annonce {
     dateCreation: Date;
     date: Date;
     image: string;
-    //userId ?
+    user: User;
   }

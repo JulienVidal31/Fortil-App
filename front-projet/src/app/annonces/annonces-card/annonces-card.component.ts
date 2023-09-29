@@ -9,8 +9,8 @@ import { AnnoncesService } from '../annonces.service';
 export class AnnoncesCardComponent implements OnInit {
 
   annoncesList!: Annonce[] //no initializer, pb ?
-  isVisible = false
   annonce!: Annonce
+  isVisibleModal: boolean = false;
 
   constructor(
     private annoncesService: AnnoncesService
@@ -21,23 +21,14 @@ export class AnnoncesCardComponent implements OnInit {
     .subscribe(annoncesList => this.annoncesList = annoncesList)
   }
   
-  showModal(): void {
-    this.isVisible = true;
+  closeModal(): void {
+    this.isVisibleModal = false;
   }
 
-  handleOk(): void {
-    // console.log('Button ok clicked!');
-    this.isVisible = false;
-  }
-
-  handleCancel(): void {
-    // console.log('Button cancel clicked!');
-    this.isVisible = false;
-  }
-
-  getAnnonceValue(annonce: Annonce): void {
+  getAnnonceValue(annonce: any): void {
     console.log(annonce)
-    this.annonce = annonce
+    this.annonce = annonce //récupère les données de la carte
+    this.isVisibleModal = true; //ouvre la modal
   }
 
 }

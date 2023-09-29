@@ -25,7 +25,7 @@ export class UsersController {
         return await this.usersService.addUser(newUser);
     }
 
-    @Patch('id/:id')
+    @Patch(':id')
     async updateUser(
         @Body() newUser: UpdateUserDto,
         @Param('id', ParseIntPipe) id: number //ParseIntPipe : force l'id en int
@@ -33,7 +33,7 @@ export class UsersController {
         return await this.usersService.updateUser(id, newUser);
     }
 
-    @Delete('id/:id')
+    @Delete(':id')
     async deleteUser(
         @Param('id', ParseIntPipe) id: number
     ) {

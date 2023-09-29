@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AnnoncesCardComponent } from './annonces-card/annonces-card.component';
 import { LoaderComponent } from '../components/loader/loader.component';
 import { AddAnnonceComponent } from './add-annonce/add-annonce.component';
-// import { AnnoncesDetailComponent } from './annonces-detail (inutilisé)/annonces-detail.component';
+import { AnnoncesDetailComponent } from './annonces-detail/annonces-detail.component';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -23,7 +23,7 @@ import { AnnoncesService } from './annonces.service';
     AnnoncesCardComponent,
     LoaderComponent,
     AddAnnonceComponent,
-    // AnnoncesDetailComponent
+    AnnoncesDetailComponent
   ],
   imports: [
     CommonModule,

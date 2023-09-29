@@ -13,10 +13,10 @@ export class UsersEntity {
   @Column({ type: 'varchar', length: 30 })
   lastName: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ type: 'varchar', length: 50 }) //unique
   email: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar' }) //a crypter
   password: string;
 
   @Column({ type: 'varchar' })

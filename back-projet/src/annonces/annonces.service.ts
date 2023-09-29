@@ -16,7 +16,9 @@ export class AnnoncesService {
     {}
 
     async getAnnonces(): Promise<AnnoncesEntity[]> {
-        return await this.annoncesRepository.find({})
+        return await this.annoncesRepository.find({
+            relations: ['user']
+        })
     }
     
     async getAnnonceById(id: number): Promise<AnnoncesEntity> {

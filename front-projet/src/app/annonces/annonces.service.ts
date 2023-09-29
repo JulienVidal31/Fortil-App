@@ -18,7 +18,7 @@ export class AnnoncesService {
   }
 
   getAnnoncesById(annoncesId: number): Observable<Annonce> {
-    return this.http.get<Annonce>(`http://localhost:3000/annonces/id/${annoncesId}`).pipe(
+    return this.http.get<Annonce>(`http://localhost:3000/annonces/${annoncesId}`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))
     )

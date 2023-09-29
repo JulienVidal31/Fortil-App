@@ -40,6 +40,14 @@
         </nz-form-control>
       </nz-form-item>
 
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired nzFor="user">Date</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your username!" nzSpan="8">
+          <input formControlName="userName" nz-input id="user" />
+        </nz-form-control>
+      </nz-form-item>
+
+
       <!-- <nz-form-item>
         <nz-form-control [nzOffset]="7" [nzSpan]="12">
           <button nz-button nzType="primary" [disabled]="!validateForm.valid">Submit</button>

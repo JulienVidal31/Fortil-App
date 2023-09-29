@@ -6,17 +6,17 @@
 
           <nz-card-meta
             nzTitle="{{ annonce.title }}"
-            nzDescription="{{ annonce.description }}"
+            nzDescription="{{ annonce.date | date:'dd/MM/yyyy' }} - Par {{ annonce.user.name }} {{ annonce.user.lastName }}"
           ></nz-card-meta>
     
           <ng-template #coverTemplate>
-            <img src="{{ annonce.image }}" />
+            <img src="assets/images/{{ annonce.image }}" />
           </ng-template>
     
           <ng-template #actionView>
             <span nz-icon nzType="eye" nzTheme="twotone"
-            (click)="showModal()"
             (click)="getAnnonceValue(annonce)"
+    
             ></span>
           </ng-template>
           
@@ -30,16 +30,9 @@
   </div>
 </nz-list>
 
-<nz-modal nzCentered [(nzVisible)]="isVisible" [nzTitle]="tplTitle" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-  <ng-template #tplTitle>
-    <span>{{ annonce.title }}</span>
-  </ng-template>
-  <ng-container *nzModalContent>
-    <p>Description : {{ annonce.description }}</p>
-    <i>Créé le {{ annonce.date }} par user x</i>
-  </ng-container>
-</nz-modal>
-<!-- <app-annonces-detail [title]="annonceId" [isVisible]="isVisible"></app-annonces-detail> -->
+<app-annonces-detail [isVisibleModal]="isVisibleModal" (onClose)="closeModal()"
+[annonce]="annonce"
+></app-annonces-detail>
 
 <h4 *ngIf='!annoncesList' >
   <app-loader></app-loader>

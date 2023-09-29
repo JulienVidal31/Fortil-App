@@ -22,7 +22,7 @@ export class AnnoncesEntity {
   @Column({ type: 'date' })
   date: Date;
   
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar' }) //unique
   image: string;
 
   @ManyToOne( //plusieurs annonces peuvent être associées à un seul client

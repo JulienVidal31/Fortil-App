@@ -17,7 +17,7 @@ export class AnnoncesController {
         return await this.annoncesService.getAnnonces();
     }
 
-    @Get('id/:id')
+    @Get(':id')
     getAnnonceById(@Param('id') id: number): Promise<AnnoncesEntity> {
       return this.annoncesService.getAnnonceById(id);
     }
@@ -29,7 +29,7 @@ export class AnnoncesController {
         return await this.annoncesService.addAnnonce(newAnnonce);
     }
 
-    @Patch('id/:id')
+    @Patch(':id')
     async updateAnnonce(
         @Body() newAnnonce: UpdateAnnoncesDto,
         @Param('id', ParseIntPipe) id: number //ParseIntPipe : force l'id en int
@@ -37,7 +37,7 @@ export class AnnoncesController {
         return await this.annoncesService.updateAnnonce(id, newAnnonce);
     }
 
-    @Delete('id/:id')
+    @Delete(':id')
     async deleteAnnonce(
         @Param('id', ParseIntPipe) id: number
     ) {

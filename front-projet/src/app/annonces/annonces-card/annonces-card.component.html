@@ -1,0 +1,48 @@
+<nz-list nzGrid>
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzXXl]="7" [nzXl]="7" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24" *ngFor="let annonce of annoncesList">
+      <nz-list-item>
+        <nz-card [nzCover]="coverTemplate" [nzActions]="[actionView, actionContact]">
+
+          <nz-card-meta
+            nzTitle="{{ annonce.title }}"
+            nzDescription="{{ annonce.description }}"
+          ></nz-card-meta>
+    
+          <ng-template #coverTemplate>
+            <img src="{{ annonce.image }}" />
+          </ng-template>
+    
+          <ng-template #actionView>
+            <span nz-icon nzType="eye" nzTheme="twotone"
+            (click)="showModal()"
+            (click)="getAnnonceValue(annonce)"
+            ></span>
+          </ng-template>
+          
+          <ng-template #actionContact>
+            <span nz-icon nzType="mail" nzTheme="twotone"></span>
+          </ng-template>
+    
+        </nz-card>
+      </nz-list-item>
+    </div>
+  </div>
+</nz-list>
+
+<nz-modal nzCentered [(nzVisible)]="isVisible" [nzTitle]="tplTitle" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-template #tplTitle>
+    <span>{{ annonce.title }}</span>
+  </ng-template>
+  <ng-container *nzModalContent>
+    <p>Description : {{ annonce.description }}</p>
+    <i>Créé le {{ annonce.date }} par user x</i>
+  </ng-container>
+</nz-modal>
+<!-- <app-annonces-detail [title]="annonceId" [isVisible]="isVisible"></app-annonces-detail> -->
+
+<h4 *ngIf='!annoncesList' >
+  <app-loader></app-loader>
+</h4>
+
+  

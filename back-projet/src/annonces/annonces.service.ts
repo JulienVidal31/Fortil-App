@@ -19,6 +19,16 @@ export class AnnoncesService {
         return await this.annoncesRepository.find({})
     }
     
+    async getAnnonceById(id: number): Promise<AnnoncesEntity> {
+        const annonce = await this.annoncesRepository.findOneBy({
+                id: id,
+        })
+        if(!annonce) {
+            throw new NotFoundException(`cet id ${id} annonce n'existe pas`)
+        }
+        return annonce
+    }
+
     async addAnnonce(newAnnonce: CreateAnnonceDto): Promise<AnnoncesEntity> {
         return await this.annoncesRepository.save(newAnnonce)
     }
@@ -39,7 +49,7 @@ export class AnnoncesService {
         const annonce = await this.annoncesRepository.findOneBy({
             id: id // where id is your column name
         })
-        if(! annonce) {
+        if(!annonce) {
             throw new NotFoundException(`cet id ${id} annonce n'existe pas`)
         }
         return annonce

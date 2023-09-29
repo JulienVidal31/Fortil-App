@@ -17,6 +17,11 @@ export class AnnoncesController {
         return await this.annoncesService.getAnnonces();
     }
 
+    @Get('id/:id')
+    getAnnonceById(@Param('id') id: number): Promise<AnnoncesEntity> {
+      return this.annoncesService.getAnnonceById(id);
+    }
+
     @Post('create')
     async postAnnonce(
         @Body() newAnnonce: CreateAnnonceDto

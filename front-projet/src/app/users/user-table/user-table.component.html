@@ -1,5 +1,5 @@
 
-    <nz-table #basicTable [nzData]="userList">
+    <nz-table #basicTable [nzData]="usersList">
       <thead>
         <tr>
           <th>Id</th>
@@ -16,12 +16,13 @@
           <td>{{ data.lastName }}</td>
           <td>{{ data.email }}</td>
           <td>{{ data.role }}</td>
-          <td>{{ <data class="role"></data> }}</td>
           <td>
-            <a>Action 一 {{ data.name }}</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a>Delete</a>
+            <!-- <nz-divider nzType="vertical"></nz-divider> -->
+            <a>
+              <span nz-icon nzType="eye" nzTheme="twotone"></span>
+            </a>
           </td>
+
         </tr>
       </tbody>
     </nz-table>

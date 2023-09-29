@@ -10,25 +10,26 @@ import fr from '@angular/common/locales/fr';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserTableComponent } from './users/user-table/user-table.component';
 
-import { NzTableModule } from 'ng-zorro-antd/table';
+import { UsersModule } from './users/users.module';
+import { AnnoncesModule } from './annonces/annonces.module';
 
 registerLocaleData(fr);
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserTableComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    
-    NzTableModule,
+    AppRoutingModule,
+
+    UsersModule,
+    AnnoncesModule,
+
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

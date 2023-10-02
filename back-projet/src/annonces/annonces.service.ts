@@ -16,11 +16,26 @@ export class AnnoncesService {
     {}
 
     async getAnnonces(): Promise<AnnoncesEntity[]> {
-        return await this.annoncesRepository.find({
-            relations: ['user']
-        })
+        // return await this.annoncesRepository.find({
+        //     relations: ['user']
+        // })
+        return await this.annoncesRepository
+        .createQueryBuilder('annonces')
+        .leftJoinAndSelect('annonces.user', 'user')
+        .select(['annonces.title', 'annonces.description', 'annonces.categorie', 'annonces.dateCreation', 'annonces.date', 'annonces.image', 'user.name', 'user.lastName', 'user.email']) // Sélectionnez les champs que vous souhaitez
+        .getMany();
     }
     
+    async getAnnoncesByUserId(id: number): Promise<AnnoncesEntity[]> {
+        return await this.annoncesRepository.find({
+            where: {
+                user: {
+                    id: id,
+                },
+            },
+        })
+    }
+
     async getAnnonceById(id: number): Promise<AnnoncesEntity> {
         const annonce = await this.annoncesRepository.findOneBy({
                 id: id,

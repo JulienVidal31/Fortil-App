@@ -22,6 +22,11 @@ export class AnnoncesController {
       return this.annoncesService.getAnnonceById(id);
     }
 
+    @Get('user/:id')
+    getAnnoncesByUserId(@Param('id') id: number): Promise<AnnoncesEntity[]> {
+      return this.annoncesService.getAnnoncesByUserId(id);
+    }
+
     @Post('create')
     async postAnnonce(
         @Body() newAnnonce: CreateAnnonceDto

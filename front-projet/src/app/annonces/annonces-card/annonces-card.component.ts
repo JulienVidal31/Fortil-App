@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Annonce } from '../annonces.interface';
 import { AnnoncesService } from '../annonces.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-annonces-card',
-  templateUrl: './annonces-card.component.html'
+  templateUrl: './annonces-card.component.html',
+  styleUrls: ['./annonces-card.component.css']
 })
 export class AnnoncesCardComponent implements OnInit {
 
@@ -13,7 +15,8 @@ export class AnnoncesCardComponent implements OnInit {
   isVisibleModal: boolean = false;
 
   constructor(
-    private annoncesService: AnnoncesService
+    private annoncesService: AnnoncesService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -29,6 +32,10 @@ export class AnnoncesCardComponent implements OnInit {
     console.log(annonce)
     this.annonce = annonce //récupère les données de la carte
     this.isVisibleModal = true; //ouvre la modal
+  }
+
+  goToAddAnnonces() {
+    this.router.navigate(['/annonces/add'])
   }
 
 }

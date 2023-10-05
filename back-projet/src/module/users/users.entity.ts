@@ -1,4 +1,4 @@
-import { AnnoncesEntity } from 'src/annonces/annonces.entity';
+import { AnnoncesEntity } from 'src/module/annonces/annonces.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')

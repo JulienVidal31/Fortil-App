@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Annonce } from './annonces.interface';
 import { Observable, catchError, of, tap } from 'rxjs';
@@ -21,6 +21,16 @@ export class AnnoncesService {
     return this.http.get<Annonce>(`http://localhost:3000/annonces/${annoncesId}`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))
+    )
+  }
+
+  addAnnonce(annonce: Annonce): Observable<Annonce> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.post<Annonce>('http://localhost:3000/annonces/create', annonce, httpOptions).pipe( //on passe dans l'url le corps de la requete (annonce) et un headers
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
     )
   }
 

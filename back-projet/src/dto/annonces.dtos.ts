@@ -1,4 +1,4 @@
-import { IsDate, IsNotEmpty, IsString } from "class-validator";
+import { IsDate, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CreateAnnonceDto {
 
@@ -19,7 +19,7 @@ export class CreateAnnonceDto {
     dateCreation: Date;
 
     @IsDate()
-    @IsNotEmpty()
+    @IsOptional()
     date: Date;
 
     @IsString()

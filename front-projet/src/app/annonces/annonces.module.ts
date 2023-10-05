@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AnnoncesCardComponent } from './annonces-card/annonces-card.component';
 import { LoaderComponent } from '../components/loader/loader.component';
@@ -14,6 +15,10 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'; // Ajoutez le module du DatePicker
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { AnnoncesService } from './annonces.service';
 
@@ -27,6 +32,8 @@ import { AnnoncesService } from './annonces.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     NzCardModule,
     NzGridModule,
     NzListModule,
@@ -34,7 +41,11 @@ import { AnnoncesService } from './annonces.service';
     NzSpinModule,
     NzModalModule,
     NzButtonModule,
-    NzFormModule
+    NzFormModule,
+    NzDatePickerModule,
+    NzInputModule,
+    NzSelectModule,
+    NzUploadModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [AnnoncesService]

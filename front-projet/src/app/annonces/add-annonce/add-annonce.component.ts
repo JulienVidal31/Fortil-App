@@ -1,75 +1,83 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl,
-  AsyncValidatorFn,
+  FormBuilder,
   FormControl,
   FormGroup,
-  NonNullableFormBuilder,
-  ValidationErrors,
-  ValidatorFn,
   Validators
 } from '@angular/forms';
-import { Observable, Observer } from 'rxjs';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { AnnoncesService } from '../annonces.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-annonce',
   templateUrl: './add-annonce.component.html',
-
   styleUrls: ['./add-annonce.component.css']
 })
 export class AddAnnonceComponent {
 
-  validateForm: FormGroup<{
-    title: FormControl<string>;
-    description: FormControl<string>;
-    // categorie: FormControl<string>;
-    // date: FormControl<Date>;
-    // image: FormControl<string>;
-  }>;
+  addAnnonceForm: FormGroup;
+  optionsCategories = [ // Liste d'options pour le menu déroulant catégories
+    { value: 'Covoiturage', label: 'Covoiturage' },
+    { value: 'Service', label: 'Service' },
+    { value: 'Vente', label: 'Vente' },
+    { value: 'Autre', label: 'Autre' },
+  ];
+
+  constructor(
+    private msg: NzMessageService,
+    private annonceService: AnnoncesService,
+    private router: Router,
+    private fb: FormBuilder
+    ) {
+      this.addAnnonceForm = this.fb.group({
+        title: ['', [Validators.required]],
+        description: ['', [Validators.required]],
+        categorie: ['', [Validators.required]],
+        date: [''],
+        image: [''],
+        user: 2, //a rendre automatique par la suite avec l'autentification
+      });
+    }
 
   submitForm(): void {
-    console.log('submit', this.validateForm.value);
+    if (this.addAnnonceForm.valid) {
+      console.log(this.addAnnonceForm.value)
+      if (!this.addAnnonceForm.value.image) { this.addAnnonceForm.value.image = "annonce-sans-image.jpg" }//controle pour si pas d'image
+      this.annonceService.addAnnonce(this.addAnnonceForm.value)
+      .subscribe((response) => {
+        if (response) {
+          this.msg.success(`Publication de l'annonce réussie !`);
+          this.router.navigate(['/annonces']) //après envoie du formulaire, on revient sur la page des annonces
+        } else {
+          this.msg.error(`La publication de l'annonce a échouée...`);
+        }
+      })
+    } else {
+      // Le formulaire est invalide, affichez un message d'erreur ou effectuez une autre action appropriée.
+    }
   }
 
   resetForm(e: MouseEvent): void {
     e.preventDefault();
-    this.validateForm.reset();
+    this.addAnnonceForm.reset();
   }
 
-  // validateConfirmPassword(): void {
-  //   setTimeout(() => this.validateForm.controls.confirm.updateValueAndValidity());
-  // }
-
-  // userNameAsyncValidator: AsyncValidatorFn = (control: AbstractControl) =>
-  //   new Observable((observer: Observer<ValidationErrors | null>) => {
-  //     setTimeout(() => {
-  //       if (control.value === 'JasonWood') {
-  //         // you have to return `{error: true}` to mark it as an error event
-  //         observer.next({ error: true, duplicated: true });
-  //       } else {
-  //         observer.next(null);
-  //       }
-  //       observer.complete();
-  //     }, 1000);
-  //   });
-
-  // confirmValidator: ValidatorFn = (control: AbstractControl) => {
-  //   if (!control.value) {
-  //     return { error: true, required: true };
-  //   } else if (control.value !== this.validateForm.controls.password.value) {
-  //     return { confirm: true, error: true };
-  //   }
-  //   return {};
-  // };
-
-  constructor(private fb: NonNullableFormBuilder) {
-    this.validateForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      // categorie: ['', [Validators.required]],
-      // date: ['', [Validators.required]],
-      // image: ['', [Validators.required]]
-    });
+  handleChange(info: NzUploadChangeParam): void {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      this.msg.success(`Chargement de ${info.file.name} réussi !`);
+    } else if (info.file.status === 'error') {
+      this.msg.error(`Chargement de ${info.file.name} échoué...`);
+    }
+    this.addAnnonceForm.value.image = info.file.name //on fait passer le nom de l'image dans le POST manuellement
   }
+
+
+
+
 
 }

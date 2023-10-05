@@ -1,5 +1,6 @@
-import { UsersEntity } from 'src/users/users.entity';
+
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UsersEntity } from '../users/users.entity';
 
 @Entity('annonces')
 export class AnnoncesEntity {

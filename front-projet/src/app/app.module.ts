@@ -14,11 +14,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './users/users.module';
 import { AnnoncesModule } from './annonces/annonces.module';
 
+import { LayoutComponent } from './components/layout/layout.component';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 registerLocaleData(fr);
 
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -26,10 +32,13 @@ registerLocaleData(fr);
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-
+    //MODULE fonctionnalité
     UsersModule,
     AnnoncesModule,
-
+    //MODULE pour component (que Layout dans app.module)
+    NzLayoutModule,
+    NzMenuModule,
+    NzIconModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

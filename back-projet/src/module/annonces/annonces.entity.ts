@@ -17,13 +17,20 @@ export class AnnoncesEntity {
   @Column({ type: 'varchar' })
   categorie: string;
 
-  @CreateDateColumn({ type: 'date' })
+  @CreateDateColumn()
   dateCreation: Date;
 
-  @Column({ type: 'date' })
+  @Column({ 
+    type: 'timestamp',
+    nullable: true
+   })
   date: Date;
   
-  @Column({ type: 'varchar' }) //unique
+  @Column({ 
+    type: 'varchar',
+    nullable: true,
+    // unique: true //à décommenter qd gestion des image avec champs aléatoire OK
+   })
   image: string;
 
   @ManyToOne( //plusieurs annonces peuvent être associées à un seul client

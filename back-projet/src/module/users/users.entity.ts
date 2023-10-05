@@ -13,7 +13,11 @@ export class UsersEntity {
   @Column({ type: 'varchar', length: 30 })
   lastName: string;
 
-  @Column({ type: 'varchar', length: 50 }) //unique
+  @Column({ 
+    type: 'varchar',
+    length: 50,
+    unique: true
+   })
   email: string;
 
   @Column({ type: 'varchar' }) //a crypter

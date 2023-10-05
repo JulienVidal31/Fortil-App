@@ -7,7 +7,7 @@
 
     <div *nzModalContent>
       <img src="assets/images/{{ annonce.image }}" width=40%>
-      <p><b>Date :</b> {{ annonce.date }}</p>
+      <p><b>Date :</b> {{ annonce.date | date:'dd/MM/yyyy HH:mm' }}</p>
       <p><b>Description :</b> {{ annonce.description }}</p>
       <i>Créé le {{ annonce.dateCreation | date:'dd/MM/yyyy' }}</i>
     </div>

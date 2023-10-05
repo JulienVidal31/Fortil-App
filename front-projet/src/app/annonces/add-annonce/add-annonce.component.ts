@@ -24,6 +24,7 @@ export class AddAnnonceComponent {
     { value: 'Vente', label: 'Vente' },
     { value: 'Autre', label: 'Autre' },
   ];
+  selectedOption: any //sert uniquement pour gérer l'affichage de Date dans formulaire
 
   constructor(
     private msg: NzMessageService,
@@ -35,8 +36,8 @@ export class AddAnnonceComponent {
         title: ['', [Validators.required]],
         description: ['', [Validators.required]],
         categorie: ['', [Validators.required]],
-        date: [''],
-        image: [''],
+        date: [null],
+        image: [null],
         user: 2, //a rendre automatique par la suite avec l'autentification
       });
     }

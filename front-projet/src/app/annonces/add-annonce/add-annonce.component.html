@@ -1,6 +1,27 @@
 
     <form nz-form [formGroup]="addAnnonceForm" (ngSubmit)="submitForm()">
-    
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Catégorie</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback>
+          <nz-select formControlName="categorie" [(ngModel)]="selectedOption">
+            <nz-option *ngFor="let option of optionsCategories" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item *ngIf="selectedOption === 'Covoiturage' || selectedOption === 'Autre'">
+        <nz-form-label [nzSpan]="7">Date</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <nz-date-picker
+            nzShowTime
+            nzFormat="dd-MM-yyyy HH:mm"
+            formControlName="date"
+            placeholder="Date de naissance"
+          ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
       <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>Titre</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="Minimum 3 caractères svp">
@@ -16,28 +37,7 @@
           </nz-textarea-count>
         </nz-form-control>
       </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="7">Date</nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-date-picker
-            nzShowTime
-            nzFormat="dd-MM-yyyy HH:mm"
-            formControlName="date"
-            placeholder="Date de naissance"
-          ></nz-date-picker>
-        </nz-form-control>
-      </nz-form-item>
  
-      <nz-form-item>
-        <nz-form-label [nzSpan]="7" nzRequired>Catégorie</nz-form-label>
-        <nz-form-control [nzSpan]="12" nzHasFeedback>
-          <nz-select formControlName="categorie">
-            <nz-option *ngFor="let option of optionsCategories" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
       <nz-form-item>
         <nz-form-label [nzSpan]="7">Image</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback>

@@ -7,16 +7,25 @@ export class UsersEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 30 })
+  @Column({ 
+    type: 'varchar',
+    length: 30,
+    // transformer: //julien --> Julien
+   })
   name: string;
 
-  @Column({ type: 'varchar', length: 30 })
+  @Column({ 
+    type: 'varchar',
+    length: 30,
+  // transformer: //vidal --> VIDAL
+   })
   lastName: string;
 
   @Column({ 
     type: 'varchar',
-    length: 50,
-    unique: true
+    length: 80,
+    unique: true,
+    // transformer: //Julien.vidal@fortil.group --> julien.vidal@fortil.group
    })
   email: string;
 

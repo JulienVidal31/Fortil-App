@@ -19,14 +19,14 @@ export class AddAnnonceComponent {
 
   addAnnonceForm: FormGroup;
   optionsCategories = [ // Liste d'options pour le menu déroulant catégories
-    { value: 'Covoiturage', label: 'Covoiturage' },
-    { value: 'Service', label: 'Service' },
-    { value: 'Vente', label: 'Vente' },
-    { value: 'Autre', label: 'Autre' },
+    { value: 'covoiturage', label: 'Covoiturage' },
+    { value: 'service', label: 'Service' },
+    { value: 'vente', label: 'Vente' },
+    { value: 'autre', label: 'Autre' },
   ];
   selectedOption: any //sert uniquement pour gérer l'affichage de Date dans formulaire
 
-  constructor(
+  constructor(  
     private msg: NzMessageService,
     private annonceService: AnnoncesService,
     private router: Router,
@@ -38,14 +38,21 @@ export class AddAnnonceComponent {
         categorie: ['', [Validators.required]],
         date: [null],
         image: [null],
-        user: 2, //a rendre automatique par la suite avec l'autentification
+        user: 1, //a rendre automatique par la suite avec l'autentification
       });
     }
 
   submitForm(): void {
     if (this.addAnnonceForm.valid) {
-      console.log(this.addAnnonceForm.value)
-      if (!this.addAnnonceForm.value.image) { this.addAnnonceForm.value.image = "annonce-sans-image.jpg" }//controle pour si pas d'image
+
+      // console.log(this.addAnnonceForm.value)
+      if (!this.addAnnonceForm.value.image) { //si pas d'image, image par défaut
+        this.addAnnonceForm.value.image = "annonce-sans-image.png"
+      }
+      if (this.addAnnonceForm.value.categorie == "covoiturage") { //si covoiturage, image covoit par défaut
+        this.addAnnonceForm.value.image = "covoit2.jpg"
+      }
+
       this.annonceService.addAnnonce(this.addAnnonceForm.value)
       .subscribe((response) => {
         if (response) {

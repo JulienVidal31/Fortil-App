@@ -1,3 +1,7 @@
+<nz-select style="width: 200px;" [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)" nzAllowClear nzPlaceHolder="Catégorie">
+  <nz-option *ngFor="let categorie of categories" [nzLabel]="categorie.labelForForm" [nzValue]="categorie.value"></nz-option>
+</nz-select>
+
 <button nz-button nzType="primary" (click)="goToAddAnnonces()" style="margin: 16px">
   <span nz-icon nzType="plus-circle" nzTheme="twotone"></span>
   Ajouter une annonce
@@ -5,17 +9,27 @@
 
 <nz-list nzGrid>
   <div nz-row [nzGutter]="16">
-    <div nz-col [nzXXl]="7" [nzXl]="7" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24" *ngFor="let annonce of annoncesList">
-      <nz-list-item>
+    <div nz-col [nzXXl]="7" [nzXl]="7" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24" *ngFor="let annonce of annoncesFilteredList">
+      <nz-list-item>  
         <nz-card [nzCover]="coverTemplate" [nzActions]="[actionView, actionContact]">
-
+          
+          <nz-tag [nzMode]="'default'" [nzColor]="'processing'">{{ annonce.categorie.toUpperCase() }}</nz-tag>
+          
           <nz-card-meta
             nzTitle="{{ annonce.title }}"
-            nzDescription="{{ annonce.date | date:'dd/MM/yyyy' }} - Par {{ annonce.user.name }} {{ annonce.user.lastName }}"
+          ></nz-card-meta>
+          <nz-card-meta *ngIf='!annonce.date'
+            nzDescription="Par {{ annonce.user.name }} {{ annonce.user.lastName }}"
+          ></nz-card-meta>
+          <nz-card-meta *ngIf='annonce.date'
+            nzDescription="Par {{ annonce.user.name }} {{ annonce.user.lastName }} - {{ annonce.date | date:'dd/MM/yyyy' }}"
           ></nz-card-meta>
     
           <ng-template #coverTemplate>
-            <img src="assets/images/{{ annonce.image }}"/>
+            <!-- <div style="display: flex; justify-content: center; width: 200px; height: 200px;">
+              <img src="assets/images/{{ annonce.image }}" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div> -->
+            <img src="assets/images/{{ annonce.image }}" style="width: auto; height: 150px"/>
           </ng-template>
     
           <ng-template #actionView>
@@ -28,8 +42,8 @@
           <ng-template #actionContact>
             <span nz-icon nzType="mail" nzTheme="twotone"></span>
           </ng-template>
-    
         </nz-card>
+
       </nz-list-item>
     </div>
   </div>

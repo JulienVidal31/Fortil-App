@@ -19,6 +19,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker'; // Ajoutez le module du DatePicker
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { AnnoncesService } from './annonces.service';
 
@@ -45,7 +46,8 @@ import { AnnoncesService } from './annonces.service';
     NzDatePickerModule,
     NzInputModule,
     NzSelectModule,
-    NzUploadModule
+    NzUploadModule,
+    NzTagModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [AnnoncesService]

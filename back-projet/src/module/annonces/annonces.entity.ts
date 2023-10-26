@@ -1,6 +1,7 @@
 
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { UsersEntity } from '../users/users.entity';
+import { Length } from 'class-validator';
 
 @Entity('annonces')
 export class AnnoncesEntity {
@@ -8,7 +9,11 @@ export class AnnoncesEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ 
+    type: 'varchar',
+    nullable: false
+  })
+  @Length(3, 100)
   title: string;
 
   @Column({ type: 'varchar' })

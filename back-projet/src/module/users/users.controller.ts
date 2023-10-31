@@ -8,9 +8,7 @@ import { UpdateUserDto } from 'src/dto/updateUser.dtos';
 @Controller('users')
 export class UsersController {
     constructor(
-        private usersService: UsersService,
-        // private ordersService: OrdersService
-
+        private usersService: UsersService
     ) {}
 
     @Get()

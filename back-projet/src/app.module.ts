@@ -7,6 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 // import { environment } from 'environement';
 import { AnnoncesModule } from './module/annonces/annonces.module';
 import { UploadsModule } from './module/uploads/uploads.module';
+import { AuthModule } from './module/auth/auth.module';
+import { UsersService } from './module/users/users.service';
+import { MailerModule } from './module/mailer/mailer.module';
 
 @Module({
   imports: [
@@ -15,8 +18,8 @@ import { UploadsModule } from './module/uploads/uploads.module';
       type: 'postgres',
       host: process.env.POSTGRES_HOST,
       port: +process.env.POSTGRES_PORT,
-      username: 'postgres', //pq marche pas en process.env
-      password: 'juju3.1IUT', //pq marche pas en process.env
+      username: process.env.POSTGRES_USER, //pq marche pas en process.env
+      password: process.env.POSTGRES_PASSWORD, //pq marche pas en process.env
       database: process.env.POSTGRES_DATABASE,
       synchronize: true, //false en production
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
@@ -24,8 +27,10 @@ import { UploadsModule } from './module/uploads/uploads.module';
     UsersModule,
     AnnoncesModule,
     UploadsModule,
+    AuthModule,
+    MailerModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}

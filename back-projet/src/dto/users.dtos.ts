@@ -19,7 +19,7 @@ email: string;
 
 @IsString()
 @IsNotEmpty()
-@MinLength(8)
+@MinLength(3)
 password: string;
 
 @IsString()

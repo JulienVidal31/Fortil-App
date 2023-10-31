@@ -45,11 +45,11 @@ export class UsersService {
 
     async deleteUser(id: number) {
         const userToDelete = await this.findUserById(id)
-        return this.usersRepository.delete(userToDelete)
+        return this.usersRepository.delete(userToDelete.id)
     }
 
     async softDeleteUser(id: number) {
-        await this.findUserById(id) //pour gestion erreur mais pas besoin de récup const avec methode softDelete      
+        await this.findUserById(id) //pour gestion erreur mais pas besoin de récup const avec methode softDelete    
         return this.usersRepository.softDelete(id) //cette méthode requiert une col @DeleteDateColumn() dans l'entité en question
     }
 
@@ -57,7 +57,10 @@ export class UsersService {
         return this.usersRepository.restore(id) //cette méthode requiert une col @DeleteDateColumn() dans l'entité en question
     }
 
-
+    async isEmailExists(email: string): Promise<UsersEntity> {
+        const user = await this.usersRepository.findOne({ where: { email }});
+        if (user) {return user}
+    }
 
 
 

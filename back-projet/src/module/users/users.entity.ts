@@ -1,5 +1,5 @@
 import { AnnoncesEntity } from 'src/module/annonces/annonces.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('users')
 export class UsersEntity {
@@ -21,6 +21,12 @@ export class UsersEntity {
    })
   lastName: string;
 
+  // @Column({ 
+  //   type: 'varchar',
+  //   length: 30,
+  //  })
+  // address: string;
+
   @Column({ 
     type: 'varchar',
     length: 80,
@@ -35,6 +41,12 @@ export class UsersEntity {
   @Column({ type: 'varchar' })
   role: string;
 
+  @CreateDateColumn()
+  dateCreation: Date;
+
+  @UpdateDateColumn()
+  dateModification: Date;
+  
   @OneToMany( //un user peut etre associé à plusieurs annonces
   type => AnnoncesEntity,
   annonces => annonces.id)

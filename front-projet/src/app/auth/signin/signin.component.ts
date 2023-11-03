@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
-import { LoginService } from './login.service';
-import { Signin } from './login.interface';
+import { AuthService } from '../auth.service';
+import { Signin } from './signin.interface';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
 })
-export class LoginComponent {
+export class SigninComponent {
 
   signinData!: Signin
   errorMessageEmail: string = 'Veuillez saisir votre email'
@@ -18,7 +18,7 @@ export class LoginComponent {
 
   constructor(
     private fb: NonNullableFormBuilder,
-    private loginService: LoginService,
+    private authService: AuthService,
     private router: Router,
     private msg: NzMessageService,
   ) {}
@@ -37,7 +37,7 @@ export class LoginComponent {
     if (this.validateForm.valid) {
       // console.log('submit', this.validateForm.value);
       this.signinData = this.validateForm.value
-      this.loginService.login(this.signinData)
+      this.authService.login(this.signinData)
       .subscribe((response) => {
         if (response.status === 401) {
           this.errorMessagePassword = 'Mot de passe incorrect'

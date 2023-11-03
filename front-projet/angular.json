@@ -96,7 +96,9 @@
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/monaco-editor/min/vs/loader.js"
+            ]
           }
         }
       }

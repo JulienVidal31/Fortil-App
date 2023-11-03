@@ -14,7 +14,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
+// import { NzCodeEditorModule } from 'ng-zorro-antd/code-editor';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -85,7 +85,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     NzCarouselModule,
     NzCascaderModule,
     NzCheckboxModule,
-    NzCodeEditorModule,
+    // NzCodeEditorModule,
     NzCollapseModule,
     NzCommentModule,
     NzDatePickerModule,
@@ -154,7 +154,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     NzCarouselModule,
     NzCascaderModule,
     NzCheckboxModule,
-    NzCodeEditorModule,
+    // NzCodeEditorModule,
     NzCollapseModule,
     NzCommentModule,
     NzDatePickerModule,

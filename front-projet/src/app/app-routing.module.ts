@@ -4,9 +4,11 @@ import { AnnoncesCardComponent } from './annonces/annonces-card/annonces-card.co
 import { UserTableComponent } from './users/user-table/user-table.component';
 import { AddAnnonceComponent } from './annonces/add-annonce/add-annonce.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { LoginComponent } from './login/signin/login.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'login', pathMatch: 'full' }, //route par défaut, qd ouverture site
+  { path: 'login', component: LoginComponent },
   { path: 'annonces', component: AnnoncesCardComponent },
   { path: 'annonces/add', component: AddAnnonceComponent },
   { path: 'users', component: UserTableComponent },

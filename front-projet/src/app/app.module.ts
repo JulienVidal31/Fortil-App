@@ -18,6 +18,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { LoginModule } from './login/signin/login.module';
 
 registerLocaleData(fr);
 
@@ -35,6 +36,7 @@ registerLocaleData(fr);
     //MODULE fonctionnalité
     UsersModule,
     AnnoncesModule,
+    LoginModule,
     //MODULE pour component (que Layout dans app.module)
     NzLayoutModule,
     NzMenuModule,

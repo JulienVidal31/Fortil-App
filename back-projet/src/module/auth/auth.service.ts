@@ -48,6 +48,7 @@ export class AuthService {
         }
         const token = this.JwtService.sign(payload, {expiresIn: "30d", secret: process.env.SECRET_KEY})
         return {
+            status: 201,
             token,
             user: {
                 username: `${user.name} ${user.lastName}`,

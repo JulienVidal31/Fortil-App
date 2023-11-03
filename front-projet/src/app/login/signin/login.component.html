@@ -1,0 +1,33 @@
+
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <!-- <nz-form-control nzErrorTip="Veuillez saisir votre email"> -->
+        <nz-form-control [nzErrorTip]="errorMessageEmail">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="email" placeholder="Email" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <!-- <nz-form-control nzErrorTip="Veuillez saisir votre mot de passe"> -->
+        <nz-form-control [nzErrorTip]="errorMessagePassword">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Mot de passe" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin">
+        <!-- <div nz-col [nzSpan]="12">
+          <label nz-checkbox formControlName="remember">
+            <span>Remember me</span>
+          </label>
+        </div> -->
+        <div>
+          <a class="login-form-forgot">Mot de passe oublié ?</a>
+        </div>
+      </div>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Connexion</button>
+      Pas encore inscrit ?
+      <a>S'inscrire ici !</a>
+    </form>
+  

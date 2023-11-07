@@ -1,3 +1,4 @@
+    <h3 nz-typography>Connexion</h3>
 
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
       <nz-form-item>
@@ -23,11 +24,15 @@
           </label>
         </div> -->
         <div>
-          <a class="login-form-forgot">Mot de passe oublié ?</a>
+          <a class="login-form-forgot" (click)="getEmail()">Mot de passe oublié ?</a>
         </div>
       </div>
       <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Connexion</button>
       Pas encore inscrit ?
-      <a>S'inscrire ici !</a>
+      <a routerLink="/signup">S'inscrire ici !</a>
     </form>
+
+    <app-reset-password-ask [isVisibleModal]="isVisibleModal" (onClose)="closeModal()"
+      [email]="email"
+    ></app-reset-password-ask>
   

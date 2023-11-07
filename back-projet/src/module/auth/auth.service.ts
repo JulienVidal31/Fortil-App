@@ -67,7 +67,7 @@ export class AuthService {
             step: 60 * 15, //valable 60s x 15 -> 15min
             encoding: "base32"
         })
-        const url = "http://localhost:3000/auth/reset-password-confirmation" //METTRE ICI URL FRONT QD INTERFACE PRETE - lien de redirection pour reinit password
+        const url = "http://localhost:4200/reset-password" //METTRE ICI URL FRONT QD INTERFACE PRETE - lien de redirection pour reinit password
         await this.mailerService.sendResetPassword(user.email, url, code)
         return ("Reset password mail has been sent")
     }

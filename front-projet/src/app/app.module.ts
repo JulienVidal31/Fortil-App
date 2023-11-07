@@ -23,6 +23,10 @@ import { AnnoncesCardComponent } from './annonces/annonces-card/annonces-card.co
 import { AnnoncesService } from './annonces/annonces.service';
 import { UsersService } from './users/users.service';
 import { AuthService } from './auth/auth.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { ResetPasswordAskComponent } from './auth/reset-password-ask/reset-passsord-ask.component';
+import { ResetPasswordConfirmationComponent } from './auth/reset-password-confirmation/reset-password-confirmation.component';
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
 registerLocaleData(fr);
 
@@ -32,10 +36,14 @@ registerLocaleData(fr);
     LayoutComponent,
     UserTableComponent,
     SigninComponent,
+    SignupComponent,
     AnnoncesCardComponent,
     LoaderComponent,
     AddAnnonceComponent,
-    AnnoncesDetailComponent
+    AnnoncesDetailComponent,
+    ResetPasswordAskComponent,
+    ResetPasswordConfirmationComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,

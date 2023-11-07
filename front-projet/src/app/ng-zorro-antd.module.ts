@@ -25,6 +25,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
@@ -96,6 +97,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     NzEmptyModule,
     NzFormModule,
     NzGridModule,
+    NzIconModule,
     NzImageModule,
     NzInputModule,
     NzInputNumberModule,
@@ -165,6 +167,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     NzEmptyModule,
     NzFormModule,
     NzGridModule,
+    NzIconModule,
     NzImageModule,
     NzInputModule,
     NzInputNumberModule,

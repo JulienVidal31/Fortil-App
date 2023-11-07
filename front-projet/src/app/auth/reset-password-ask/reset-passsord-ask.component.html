@@ -1,0 +1,28 @@
+
+  <nz-modal [(nzVisible)]="isVisibleModal" [nzTitle]="Title" (nzOnCancel)="closeModal()">
+    
+    <ng-template #Title>
+      <span>Mot de passe oublié</span>
+    </ng-template>
+
+    <div *nzModalContent>
+        <p>Entrer l'adresse email de demande de réinitialisation de mot de passe</p>
+        <!-- <input nz-input [(ngModel)]="email" /> -->
+        <form nz-form [formGroup]="emailForm" class="login-form">
+          <nz-form-item>
+            <!-- <nz-form-control nzErrorTip="Veuillez saisir votre email"> -->
+            <nz-form-control nzErrorTip="Email invalide">
+              <nz-input-group>
+                <input type="text" nz-input formControlName="email"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+    </div>
+
+    <div *nzModalFooter>
+      <button nz-button nzType="default" (click)="closeModal()">Annuler</button>
+      <button nz-button nzType="primary" (click)="sendEmail()">Confirmer</button>
+    </div>
+
+  </nz-modal>

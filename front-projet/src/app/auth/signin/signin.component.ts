@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
@@ -15,6 +15,8 @@ export class SigninComponent {
   signinData!: Signin
   errorMessageEmail: string = 'Veuillez saisir votre email'
   errorMessagePassword: string = 'Veuillez saisir votre mot de passe'
+  isVisibleModal: boolean = false;
+  email?: string
 
   constructor(
     private fb: NonNullableFormBuilder,
@@ -26,18 +28,16 @@ export class SigninComponent {
   validateForm: FormGroup<{
     email: FormControl<string>;
     password: FormControl<string>;
-    // remember: FormControl<boolean>;
   }> = this.fb.group({
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    // remember: [true]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
   });
 
   submitForm(): void {
     if (this.validateForm.valid) {
       // console.log('submit', this.validateForm.value);
       this.signinData = this.validateForm.value
-      this.authService.login(this.signinData)
+      this.authService.signin(this.signinData)
       .subscribe((response) => {
         if (response.status === 401) {
           this.errorMessagePassword = 'Mot de passe incorrect'
@@ -53,10 +53,9 @@ export class SigninComponent {
           }
         } else if (response.status === 201) {
           this.msg.success(`Connexion réussie !`);
-          //this.router.navigate(['/annonces']) //après envoie du formulaire, on revient sur la page d'accueil
+          this.router.navigate(['/welcome-page']) //après envoie du formulaire, on revient sur la page d'accueil
         }
-        }
-      );
+      });
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -67,5 +66,15 @@ export class SigninComponent {
     }
   }
 
-  
+  closeModal(): void {
+    this.isVisibleModal = false;
+  }
+
+  getEmail() {
+    this.email = this.validateForm.value.email //récupère les données de la carte
+    // console.log(this.email)
+    this.isVisibleModal = true; //ouvre la modal
+  }
+
+
 }

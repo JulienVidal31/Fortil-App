@@ -20,7 +20,7 @@ export class ResetPasswordConfirmationComponent {
     private msg: NzMessageService,
     ) {
       this.newPasswordForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required]],
         code: ['', [Validators.required]],
         password: ['', [Validators.required]],
         confirmNewPassword: ['', [Validators.required]]

@@ -23,13 +23,13 @@ export class SigninComponent {
     private authService: AuthService,
     private router: Router,
     private msg: NzMessageService,
-  ) {}
+  ) { }
 
   validateForm: FormGroup<{
     email: FormControl<string>;
     password: FormControl<string>;
   }> = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
 
@@ -53,6 +53,8 @@ export class SigninComponent {
           }
         } else if (response.status === 201) {
           this.msg.success(`Connexion réussie !`);
+          localStorage.setItem('token', response.token) //écriture du token dans le localStorage
+          // console.log(this.authService.decodeToken(response.token)) //TEST
           this.router.navigate(['/welcome-page']) //après envoie du formulaire, on revient sur la page d'accueil
         }
       });

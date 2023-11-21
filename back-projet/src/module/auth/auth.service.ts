@@ -43,8 +43,10 @@ export class AuthService {
         if(!match) {throw new UnauthorizedException("Password don't match")}
         //Retourner un token jwt
         const payload = {
-            sub: user.id,
-            email: user.email
+            id: user.id,
+            email: user.email,
+            role: user.role,
+            name: user.name
         }
         const token = this.JwtService.sign(payload, {expiresIn: "30d", secret: process.env.SECRET_KEY})
         return {

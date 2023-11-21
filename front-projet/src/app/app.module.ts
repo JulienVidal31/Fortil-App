@@ -27,6 +27,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ResetPasswordAskComponent } from './auth/reset-password-ask/reset-passsord-ask.component';
 import { ResetPasswordConfirmationComponent } from './auth/reset-password-confirmation/reset-password-confirmation.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { UserInformationComponent } from './users/user-information/user-information.component';
+import { AnnonceByUserComponent } from './annonces/annonce-by-user/annonce-by-user.component';
 
 registerLocaleData(fr);
 
@@ -43,7 +45,9 @@ registerLocaleData(fr);
     AnnoncesDetailComponent,
     ResetPasswordAskComponent,
     ResetPasswordConfirmationComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    UserInformationComponent,
+    AnnonceByUserComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,6 @@ export class UserTableComponent implements OnInit {
   usersList!: User[] //no initializer, pb ?
 
   constructor(
-    // private router: Router,
     private usersService: UsersService
   ) {}
 

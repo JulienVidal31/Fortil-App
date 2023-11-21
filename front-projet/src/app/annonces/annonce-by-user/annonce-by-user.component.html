@@ -1,0 +1,29 @@
+
+    <nz-table #basicTable [nzData]="annoncesList">
+      <thead>
+        <tr>
+          <th>Annonce</th>
+          <th>Catégorie</th>
+          <th>Date de création</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.title }}</td>
+          <td>{{ data.categorie }}</td>
+          <td>{{ data.dateCreation | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <a nz-popconfirm nzPopconfirmTitle="Confirmer la suppression ?" [nzIcon]="iconTpl" (nzOnConfirm)="deleteConfirmation(data)">
+              <button nz-button nzType="primary" nzDanger>
+                <i nz-icon nzType="delete"></i>
+              </button>
+            </a>
+            <ng-template #iconTpl>
+              <span nz-icon nzType="question-circle-o" style="color: red;"></span>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  

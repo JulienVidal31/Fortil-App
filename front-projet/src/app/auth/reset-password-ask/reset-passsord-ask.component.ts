@@ -29,7 +29,7 @@ export class ResetPasswordAskComponent {
   emailForm: FormGroup<{
     email: FormControl<string>;
   }> = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required]],
   });
   
   sendEmail() {

@@ -74,7 +74,7 @@ export class AnnoncesService {
 
     async deleteAnnonce(id: number) {
         const annonceToDelete = await this.findAnnonceById(id)
-        return this.annoncesRepository.delete(annonceToDelete)
+        return this.annoncesRepository.delete(annonceToDelete.id)
     }
 
     async softDeleteAnnonce(id: number) {

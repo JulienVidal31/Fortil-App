@@ -40,7 +40,8 @@ export class AnnoncesEntity {
 
   @ManyToOne( //plusieurs annonces peuvent être associées à un seul client
   type => UsersEntity,
-  user => user.id)
+  user => user.id,
+  { nullable: false })
   user: UsersEntity; //userId dans bdd
 
 }

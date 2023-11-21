@@ -9,6 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { AnnoncesService } from '../annonces.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-add-annonce',
@@ -25,27 +26,32 @@ export class AddAnnonceComponent {
     { value: 'autre', label: 'Autre' },
   ];
   selectedOption: any //sert uniquement pour gérer l'affichage de Date dans formulaire
+  userId!: number
 
   constructor(  
     private msg: NzMessageService,
     private annonceService: AnnoncesService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService
     ) {
+      const token: string | null = this.authService.getToken()
+      if(token) {this.userId = this.authService.decodeToken(token).id}
+
       this.addAnnonceForm = this.fb.group({
         title: ['', [Validators.required]],
         description: ['', [Validators.required]],
         categorie: ['', [Validators.required]],
         date: [null],
         image: [null],
-        user: 1, //a rendre automatique par la suite avec l'autentification
+        user: [this.userId] //va chercher l'id du user connecté dans le token
       });
     }
 
   submitForm(): void {
     if (this.addAnnonceForm.valid) {
 
-      // console.log(this.addAnnonceForm.value)
+      console.log(this.addAnnonceForm.value)
       if (!this.addAnnonceForm.value.image) { //si pas d'image, image par défaut
         this.addAnnonceForm.value.image = "annonce-sans-image.png"
       }

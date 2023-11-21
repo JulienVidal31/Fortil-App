@@ -1,17 +1,18 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { AnnoncesService } from './annonces.service';
 import { AnnoncesEntity } from './annonces.entity';
 import { CreateAnnonceDto } from 'src/dto/annonces.dtos';
 import { UpdateAnnoncesDto } from 'src/dto/updateAnnonces.dtos';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('annonces')
 export class AnnoncesController {
     constructor(
         private annoncesService: AnnoncesService,
         // private ordersService: OrdersService
-
     ) {}
 
+    @UseGuards(AuthGuard("jwt"))
     @Get()
     async getAllAnnonces(): Promise<AnnoncesEntity[]> {
         return await this.annoncesService.getAnnonces();

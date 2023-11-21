@@ -14,13 +14,12 @@ export class CreateAnnonceDto {
     @IsNotEmpty()
     categorie: string;
 
-    @IsDate()
-    @IsNotEmpty()
-    dateCreation: Date;
+    // @IsDate() //A NE PAS METTRE CAR AUTOMATIQUE
+    // dateCreation: Date;
 
-    @IsDate()
-    @IsOptional()
-    date: Date;
+    // @IsDate() //sinon beug
+    // @IsOptional()
+    // date: Date;
 
     @IsString()
     image: string;

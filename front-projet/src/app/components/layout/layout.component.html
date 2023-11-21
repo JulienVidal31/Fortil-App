@@ -1,11 +1,13 @@
     <nz-layout>
       <nz-header>
+
         <div>
           <a routerLink="/welcome-page">
             <img class="logo" src="assets/images/logo-fortil.png" alt="logo Fortil"/>
           </a>
         </div>
-        <ul nz-menu nzTheme="dark" nzMode="horizontal">
+
+        <ul *ngIf="userIsLogin()" nz-menu nzTheme="dark" nzMode="horizontal">
           <li nz-menu-item (click)="goToAnnonces()">
             <span nz-icon nzType="notification" nzTheme="outline" style="margin: 10px"></span>
             ANNONCES
@@ -18,11 +20,12 @@
             <span nz-icon nzType="shopping-cart" nzTheme="outline" style="margin: 10px"></span>
             PANIERS
           </li>
-          <li nz-submenu nzTitle="PROFIL" nzIcon="user" class="ajust-right">
+          <!-- <li nz-submenu [nzTitle]="nameLabel" nzIcon="user" class="ajust-right"> -->
+          <li nz-submenu [nzTitle]="nameLabel | uppercase" nzIcon="user">
             <ul>
-              <li nz-menu-item>Profil</li>
-              <li nz-menu-item>Gérer mes annonces</li>
-              <li nz-menu-item>Déconnexion</li>
+              <li nz-menu-item routerLink="/user/info">Profil</li>
+              <li nz-menu-item routerLink="/user/annonces">Gérer mes annonces</li>
+              <li nz-menu-item (click)="deconnexion()">Déconnexion</li>
             </ul>
           </li>
         </ul>

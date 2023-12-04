@@ -57,7 +57,7 @@ export class AnnoncesCardComponent implements OnInit {
   }
 
   onCategoryChange(value: string): void { // Fonction appelée lorsqu'une catégorie est sélectionnée
-    // console.log('Catégorie sélectionnée : ', value);
+    // console.log('Catégorie sélectionnée : ', value); //test
     this.annoncesFilteredList = this.annoncesList; // Réinitialiser les données filtrées aux données d'origine
     this.annoncesFilteredList = this.applyFilter(value); // Appliquer le filtre sur les données d'origine
   }

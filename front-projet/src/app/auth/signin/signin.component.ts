@@ -53,6 +53,8 @@ export class SigninComponent {
           }
         } else if (response.status === 201) {
           this.msg.success(`Connexion réussie !`);
+          // this.nameConnected = this.authService.getNameUser()
+          // console.log(this.nameConnected)
           localStorage.setItem('token', response.token) //écriture du token dans le localStorage
           // console.log(this.authService.decodeToken(response.token)) //TEST
           this.router.navigate(['/welcome-page']) //après envoie du formulaire, on revient sur la page d'accueil

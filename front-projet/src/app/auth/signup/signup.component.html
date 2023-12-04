@@ -1,60 +1,56 @@
 
-<div>
-
+  <div class="nz-row" style="display: flex; justify-content: center; align-items: center">
     <div>
-        <h3 nz-typography>Inscription</h3>
+      <h3 nz-typography>Inscription</h3>
     </div>
+  </div>
 
-    <div>
-        <form nz-form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+  <form nz-form [formGroup]="signupForm" (ngSubmit)="submitForm()">
 
-          <nz-form-item>
-              <nz-form-label [nzSpan]="5" nzRequired>Prénom</nz-form-label>
-              <nz-form-control [nzSpan]="5" nzHasFeedback nzErrorTip="3 caractères mini">
-                <input nz-input formControlName="name" minlength="3"/>
-              </nz-form-control>
-          </nz-form-item>
-      
-          <nz-form-item>
-              <nz-form-label [nzSpan]="5" nzRequired>Nom</nz-form-label>
-              <nz-form-control [nzSpan]="5" nzHasFeedback nzErrorTip="Champs requis">
-                  <input nz-input formControlName="lastName"/>
-              </nz-form-control>
-          </nz-form-item>
-      
-          <nz-form-item>
-            <nz-form-label [nzSpan]="5" nzRequired>Email</nz-form-label>
-            <nz-form-control [nzSpan]="5" nzHasFeedback [nzErrorTip]="errorMessageEmail">
-              <input nz-input formControlName="email" type="email" />
-            </nz-form-control>
-          </nz-form-item>
-      
-          <nz-form-item>
-            <nz-form-label [nzSpan]="5" nzRequired>Mot de passe</nz-form-label>
-            <nz-form-control [nzSpan]="5" nzHasFeedback nzErrorTip="3 caractères mini">
-              <input nz-input formControlName="password" type="password" minlength="3"/>
-            </nz-form-control>
-          </nz-form-item>
-      
-          <nz-form-item>
-            <nz-form-label [nzSpan]="5" nzRequired>Confirmer le mot de passe</nz-form-label>
-            <nz-form-control  [nzSpan]="5" nzHasFeedback nzErrorTip="Les mots de passe ne correspondent pas">
-              <input nz-input formControlName="confirmPassword" type="password" />
-            </nz-form-control>
-          </nz-form-item>
-      
-          <nz-form-item>
-              <nz-form-control [nzOffset]="5" [nzSpan]="12">
-                  <button nz-button nzType="primary" [disabled]="!signupForm.valid">
-                      S'inscrire
-                  </button>
-              </nz-form-control>
-          </nz-form-item>
-        
-        </form>
-    </div>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="12" nzRequired>Prénom</nz-form-label>
+        <nz-form-control [nzSpan]="10" nzHasFeedback nzErrorTip="3 caractères mini">
+          <input nz-input formControlName="name" minlength="3"/>
+        </nz-form-control>
+    </nz-form-item>
 
-</div>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="12" nzRequired>Nom</nz-form-label>
+        <nz-form-control [nzSpan]="10" nzHasFeedback nzErrorTip="Champs requis">
+            <input nz-input formControlName="lastName"/>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="12" nzRequired>Email</nz-form-label>
+      <nz-form-control [nzSpan]="10" nzHasFeedback [nzErrorTip]="errorMessageEmail">
+        <input nz-input formControlName="email" type="email" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="12" nzRequired>Mot de passe</nz-form-label>
+      <nz-form-control [nzSpan]="10" nzHasFeedback nzErrorTip="3 caractères mini">
+        <input nz-input formControlName="password" type="password" minlength="3"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="12" nzRequired>Confirmer le mot de passe</nz-form-label>
+      <nz-form-control  [nzSpan]="10" nzHasFeedback nzErrorTip="Les mots de passe ne correspondent pas">
+        <input nz-input formControlName="confirmPassword" type="password" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control [nzOffset]="12">
+            <button nz-button nzType="primary" [disabled]="!signupForm.valid">
+                S'inscrire
+            </button>
+        </nz-form-control>
+    </nz-form-item>
+  
+  </form>
 
     
     

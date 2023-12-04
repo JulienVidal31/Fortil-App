@@ -23,11 +23,15 @@ nz-footer {
   background: #fff;
   padding: 24px;
   min-height: 280px;
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  width: 100% */
+  width: 100%
 }
 
-.ajust-right {
+/* .ajust-right {
   margin-left: 30%;
-}
+} */
+
+/* .last-menu-item {
+  margin-left: 30%;
+} */

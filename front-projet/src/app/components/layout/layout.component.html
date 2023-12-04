@@ -20,8 +20,7 @@
             <span nz-icon nzType="shopping-cart" nzTheme="outline" style="margin: 10px"></span>
             PANIERS
           </li>
-          <!-- <li nz-submenu [nzTitle]="nameLabel" nzIcon="user" class="ajust-right"> -->
-          <li nz-submenu [nzTitle]="nameLabel | uppercase" nzIcon="user">
+          <li nz-submenu nzTitle= {{authService.getNameUser()}} nzIcon="user" class="last-menu-item">
             <ul>
               <li nz-menu-item routerLink="/user/info">Profil</li>
               <li nz-menu-item routerLink="/user/annonces">Gérer mes annonces</li>

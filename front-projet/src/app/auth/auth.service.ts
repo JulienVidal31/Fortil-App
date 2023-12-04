@@ -67,7 +67,7 @@ export class AuthService {
   getNameUser() {
     const token = this.getToken()
     if(token) {
-      const name = this.decodeToken(token).name
+      const name = this.decodeToken(token).name.toUpperCase()
     return name
     }
   }

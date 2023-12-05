@@ -23,6 +23,7 @@ export class AnnoncesService {
         .createQueryBuilder('annonces')
         .leftJoinAndSelect('annonces.user', 'user')
         .select(['annonces.title', 'annonces.description', 'annonces.categorie', 'annonces.dateCreation', 'annonces.date', 'annonces.image', 'user.name', 'user.lastName', 'user.email']) // Sélectionnez les champs que vous souhaitez
+        .orderBy('annonces.dateCreation', 'DESC')
         .getMany();
     }
     
@@ -33,6 +34,9 @@ export class AnnoncesService {
                     id: id,
                 },
             },
+            order: {
+                dateCreation: 'DESC' // Tri par date de création, 'DESC' pour trier du plus récent au plus ancien
+            }
         })
     }
 

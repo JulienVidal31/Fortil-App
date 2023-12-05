@@ -9,6 +9,8 @@ import { environment } from '../environment';
 })
 export class AnnoncesService {
 
+  annonceToUpdate!: Annonce //on récupère dans cette variable les données de l'annonce que l'on veut mettre à jour (transit du composant annonce-by-user vers add-annonce)
+
   constructor(private http: HttpClient) { }
 
   getAnnonces(): Observable<Annonce[]> {
@@ -46,11 +48,21 @@ export class AnnoncesService {
     )
   }
 
-  deleteAnnonce(annonceId: number): Observable<Annonce> {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    // }
-    return this.http.delete<Annonce>(`${environment.apiUrl}annonces/${annonceId}`).pipe( //on passe dans l'url le corps de la requete (annonce) et un headers
+  deleteAnnonce(annonce: Annonce): Observable<Annonce> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.delete<Annonce>(`${environment.apiUrl}annonces/${annonce.id}`).pipe( //on passe dans l'url le corps de la requete (annonce) et un headers
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    )
+  }
+
+  updateAnnonce(annonce: Annonce): Observable<Annonce> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.patch<Annonce>(`${environment.apiUrl}annonces/${annonce.id}`, annonce, httpOptions).pipe( //on passe dans l'url le corps de la requete (annonce) et un headers
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, null))
     )

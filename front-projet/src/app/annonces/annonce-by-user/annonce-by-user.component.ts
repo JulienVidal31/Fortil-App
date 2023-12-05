@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Annonce } from '../annonces.interface';
 import { AnnoncesService } from '../annonces.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-annonce-by-user',
@@ -10,12 +11,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class AnnonceByUserComponent {
 
   annoncesList!: Annonce[]
-  annonce!: Annonce
+  annonceToUpdate!: Annonce
   userId!: number
 
   constructor(
     private annoncesService: AnnoncesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -24,8 +26,6 @@ export class AnnonceByUserComponent {
       this.userId = this.authService.decodeToken(token).id;
       this.getAnnoncesByUserId(this.userId)
     }
-    // this.annoncesService.getAnnoncesByUserId(this.userId)
-    // .subscribe(annoncesList => this.annoncesList = annoncesList)
   }
 
   getAnnoncesByUserId(userID: number) {
@@ -35,7 +35,14 @@ export class AnnonceByUserComponent {
 
   deleteConfirmation(annonce: Annonce) {
     // console.log(annonce)
-    this.annoncesService.deleteAnnonce(annonce.id)
+    this.annoncesService.deleteAnnonce(annonce)
     .subscribe(() => this.getAnnoncesByUserId(this.userId)) //refresh annonces du user
   }
+
+  updateAnnonce(annonce: Annonce) {
+    //récupérer les données de l'annonce pour les pré-afficher dans le formulaire
+    this.annoncesService.annonceToUpdate = annonce //on stocke dans la variable annonceToUpdate du service Annonce l'annonce à modifier     
+    this.router.navigate(['/annonces/update'])
+  }
+
 }

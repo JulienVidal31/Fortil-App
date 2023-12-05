@@ -14,13 +14,13 @@ export class UpdateAnnoncesDto {
     @IsOptional()
     categorie: string;
 
-    @IsDate()
-    @IsOptional()
-    dateCreation: Date;
+    // @IsDate()
+    // @IsOptional()
+    // dateCreation: Date;
 
-    @IsDate()
-    @IsOptional()
-    date: Date;
+    // @IsDate()
+    // @IsOptional()
+    // date: Date;
 
     @IsString()
     @IsOptional()

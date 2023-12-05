@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'welcome-page', component: WelcomePageComponent, canActivate: [AuthGuard] },
   { path: 'annonces', component: AnnoncesCardComponent },
   { path: 'annonces/add', component: AddAnnonceComponent },
+  { path: 'annonces/update', component: AddAnnonceComponent },
   { path: 'users', component: UserTableComponent },
   { path: 'user/info', component: UserInformationComponent },
   { path: 'user/annonces', component: AnnonceByUserComponent },

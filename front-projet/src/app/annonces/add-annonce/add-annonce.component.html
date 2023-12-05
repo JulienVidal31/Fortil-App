@@ -1,11 +1,12 @@
-    <h3 nz-typography>Nouvelle annonce</h3>
+    <h3 *ngIf="isAddForm" nz-typography>Nouvelle annonce</h3>
+    <h3 *ngIf="!isAddForm" nz-typography>Modifier votre annonce</h3>
 
     <form nz-form [formGroup]="addAnnonceForm" (ngSubmit)="submitForm()">
 
       <nz-form-item>
         <nz-form-label [nzSpan]="7" nzRequired>Catégorie</nz-form-label>
         <nz-form-control [nzSpan]="12" nzHasFeedback>
-          <nz-select formControlName="categorie" [(ngModel)]="selectedOption">
+          <nz-select formControlName="categorie" [(ngModel)]="selectedOption" (ngModelChange)="onCategoryChange($event)">
             <nz-option *ngFor="let option of optionsCategories" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
           </nz-select>
         </nz-form-control>

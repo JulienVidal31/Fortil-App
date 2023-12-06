@@ -4,6 +4,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateAnnonceDto } from 'src/dto/annonces.dtos';
 import { UpdateAnnoncesDto } from 'src/dto/updateAnnonces.dtos';
+import { MailerService } from '../mailer/mailer.service';
+import { SendEmailAnnonceDto } from 'src/dto/sendEmailAnnonce.dto';
 
 
 @Injectable()
@@ -12,6 +14,7 @@ export class AnnoncesService {
     constructor(
         @InjectRepository(AnnoncesEntity)
         private annoncesRepository: Repository<AnnoncesEntity>,
+        private readonly mailerService: MailerService,
     ) 
     {}
 
@@ -90,7 +93,11 @@ export class AnnoncesService {
         return this.annoncesRepository.restore(id) //cette méthode requiert une col @DeleteDateColumn() dans l'entité en question
     }
 
-
+    async sendEmailAnnonce(emailData: SendEmailAnnonceDto) {
+        // console.log(emailData) //test
+        await this.mailerService.sendEmailAnnonce(emailData.emailSender, emailData.emailTarget, emailData.message, emailData.title)
+        return ("Email send with success")
+    }
 
 }
 

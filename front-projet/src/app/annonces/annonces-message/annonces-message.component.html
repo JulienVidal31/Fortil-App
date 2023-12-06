@@ -1,0 +1,20 @@
+
+  <nz-modal [(nzVisible)]="isVisibleModal" [nzTitle]="Title" (nzOnCancel)="closeModal()">
+    
+    <ng-template #Title>
+      <span>{{ annonce.title }}</span>
+    </ng-template>
+
+    <div *nzModalContent>
+      <p><b>Message à : {{ annonce.user.email }}</b></p>
+      <nz-textarea-count [nzMaxCharacterCount]="2000">
+        <textarea nz-input rows="4" style="width: 100%;" placeholder="Taper votre message ici" [(ngModel)]="messageToSend"></textarea>
+      </nz-textarea-count>
+    </div>
+
+    <div *nzModalFooter>
+      <button nz-button nzType="default" (click)="closeModal()">Fermer</button>
+      <button nz-button nzType="primary" (click)="sendMessage()">Envoyer</button>
+    </div>
+
+  </nz-modal>

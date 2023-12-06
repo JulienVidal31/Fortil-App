@@ -14,7 +14,8 @@ export class AnnoncesCardComponent implements OnInit {
   annoncesList!: Annonce[]
   annonce!: Annonce
   annoncesFilteredList: Annonce[] = this.annoncesList //copie des données originales
-  isVisibleModal: boolean = false;
+  isVisibleModalView: boolean = false;
+  isVisibleModalMessage: boolean = false;
   selectedCategory: string | null = null // Variable pour stocker la catégorie sélectionnée
   // categories: string[] = categories.map(item => item.labelForForm)
   categories = categories
@@ -32,22 +33,31 @@ export class AnnoncesCardComponent implements OnInit {
     })
   }
   
-  closeModal(): void {
-    this.isVisibleModal = false;
+  closeModalView(): void {
+    this.isVisibleModalView = false;
   }
 
-  getAnnonceValue(annonce: any): void {
+  closeModalMessage(): void {
+    this.isVisibleModalMessage = false;
+  }
+
+  openModalView(annonce: any): void {
     // console.log(annonce)
     this.annonce = annonce //récupère les données de la carte
-    this.isVisibleModal = true; //ouvre la modal
+    this.isVisibleModalView = true; //ouvre la modal view
+  }
+
+  openModalMessage(annonce: any): void {
+    // console.log(annonce)
+    this.annonce = annonce //récupère les données de la carte
+    this.isVisibleModalMessage = true; //ouvre la modal message
   }
 
   goToAddAnnonces() {
     this.router.navigate(['/annonces/add'])
   }
   
-  // Fonction de filtrage
-  applyFilter(value: string): any[] {
+  applyFilter(value: string): any[] { // Fonction de filtrage
     // console.log(this.selectedCategory)
     if (this.selectedCategory === null) {
       return this.annoncesList

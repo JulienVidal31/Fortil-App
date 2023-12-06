@@ -17,6 +17,7 @@ export class MailerService {
                 pass: testAccount.pass,
             }
         })
+        // console.log(transport)
         return transport
     }
 
@@ -39,6 +40,15 @@ export class MailerService {
             <p>Secret code : <strong>${code}</strong></p>
             <p>Ce code est valable 15 minutes</p>
             `
+        })
+    }
+
+    async sendEmailAnnonce(userEmailSender:string, userEmailTarget: string, message: string, title: string) {
+        (await this.transporter()).sendMail({
+            from: "app@localhost.com",
+            to: userEmailTarget,
+            subject: `Message concernant votre annonce Fortil "${title}" de la part de ${userEmailSender}`,
+            html: `<p> ${message} </p>`
         })
     }
 

@@ -33,13 +33,14 @@
     
           <ng-template #actionView>
             <span nz-icon nzType="eye" nzTheme="twotone"
-            (click)="getAnnonceValue(annonce)"
-    
+            (click)="openModalView(annonce)"
             ></span>
           </ng-template>
           
           <ng-template #actionContact>
-            <span nz-icon nzType="mail" nzTheme="twotone"></span>
+            <span nz-icon nzType="mail" nzTheme="twotone"
+            (click)="openModalMessage(annonce)"
+            ></span>
           </ng-template>
         </nz-card>
 
@@ -48,9 +49,13 @@
   </div>
 </nz-list>
 
-<app-annonces-detail [isVisibleModal]="isVisibleModal" (onClose)="closeModal()"
+<app-annonces-detail [isVisibleModal]="isVisibleModalView" (onClose)="closeModalView()"
 [annonce]="annonce"
 ></app-annonces-detail>
+
+<app-annonces-message [isVisibleModal]="isVisibleModalMessage" (onClose)="closeModalMessage()"
+[annonce]="annonce"
+></app-annonces-message>
 
 <h4 *ngIf='!annoncesList' >
   <app-loader></app-loader>

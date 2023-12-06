@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Annonce } from './annonces.interface';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { environment } from '../environment';
+import { AnnonceMessageInterface } from './annonces-message/annonces-message.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,12 @@ export class AnnoncesService {
     )
   }
 
+  sendEmailAnnonce(dataEmail: AnnonceMessageInterface) {
+    return this.http.post(`${environment.apiUrl}annonces/email`, dataEmail).pipe(
+      tap((response) => this.log(response)), //on log la réponse, tap = console log pour Observable
+      catchError((error) => this.handleError(error, error)) //on retourne Observable contenant erreur si erreur
+      )
+  }
 
   private log(response: any) {
     console.table(response)

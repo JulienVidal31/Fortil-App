@@ -29,6 +29,7 @@ import { ResetPasswordConfirmationComponent } from './auth/reset-password-confir
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { UserInformationComponent } from './users/user-information/user-information.component';
 import { AnnonceByUserComponent } from './annonces/annonce-by-user/annonce-by-user.component';
+import { AnnoncesMessageComponent } from './annonces/annonces-message/annonces-message.component';
 
 registerLocaleData(fr);
 
@@ -43,6 +44,7 @@ registerLocaleData(fr);
     LoaderComponent,
     AddAnnonceComponent,
     AnnoncesDetailComponent,
+    AnnoncesMessageComponent,
     ResetPasswordAskComponent,
     ResetPasswordConfirmationComponent,
     WelcomePageComponent,

@@ -136,6 +136,7 @@ export class AddAnnonceComponent {
     this.addAnnonceForm.reset();
   }
 
+  //notif pour chargement de l'image dans le form
   handleChange(info: NzUploadChangeParam): void {
     if (info.file.status !== 'uploading') {
       console.log(info.file, info.fileList);

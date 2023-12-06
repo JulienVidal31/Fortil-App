@@ -4,6 +4,7 @@ import { AnnoncesEntity } from './annonces.entity';
 import { CreateAnnonceDto } from 'src/dto/annonces.dtos';
 import { UpdateAnnoncesDto } from 'src/dto/updateAnnonces.dtos';
 import { AuthGuard } from '@nestjs/passport';
+import { SendEmailAnnonceDto } from 'src/dto/sendEmailAnnonce.dto';
 
 @Controller('annonces')
 export class AnnoncesController {
@@ -48,6 +49,13 @@ export class AnnoncesController {
         @Param('id', ParseIntPipe) id: number
     ) {
         return this.annoncesService.deleteAnnonce(id)
+    }
+
+    @Post("email")
+    async sendEmailAnnonce(
+        @Body() sendEmailAnnonceDto: SendEmailAnnonceDto
+    ) {
+        return this.annoncesService.sendEmailAnnonce(sendEmailAnnonceDto)
     }
 
 }

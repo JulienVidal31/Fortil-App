@@ -8,18 +8,18 @@
         </div>
 
         <ul *ngIf="userIsLogin()" nz-menu nzTheme="dark" nzMode="horizontal">
-          <li nz-menu-item (click)="goToAnnonces()">
+          <li nz-menu-item routerLink="/annonces">
             <span nz-icon nzType="notification" nzTheme="outline" style="margin: 10px"></span>
             ANNONCES
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item routerLink="/office">
             <span nz-icon nzType="calendar" nzTheme="outline" style="margin: 10px"></span>
-            EVENTS
+            RESERVATION BUREAU
           </li>
-          <li nz-menu-item>
+          <!-- <li nz-menu-item>
             <span nz-icon nzType="shopping-cart" nzTheme="outline" style="margin: 10px"></span>
             PANIERS
-          </li>
+          </li> -->
           <li nz-submenu nzTitle= {{authService.getNameUser()}} nzIcon="user" class="last-menu-item">
             <ul>
               <li nz-menu-item routerLink="/user/info">Profil</li>

@@ -1,0 +1,20 @@
+<nz-date-picker
+    nzFormat="dd-MM-yyyy"
+    [nzShowTime]="false"
+    [(ngModel)]="selectedDate"
+    [nzAllowClear]="false"
+></nz-date-picker>
+
+<div class="plan-agence">
+    <h2>Plan de l'agence</h2>
+    <div class="offices">
+        <div *ngFor="let office of officesList" class="office" [ngClass]="{ 'reserve': isReserved(office.id, selectedDate) }" (click)="reserveOffice(selectedDate, office.id)">
+          <i *ngIf="office.withScreen" nz-icon nzType="desktop"></i> 
+          Bureau {{ office.id }}
+          <span *ngIf="reservedBy(office.reservations, selectedDate)"  class="reservedBy">
+            Reservé par {{ reservedBy(office.reservations, selectedDate) }}
+          </span>
+      </div>
+    </div>
+</div>
+  

@@ -14,7 +14,7 @@
 
     <div *nzModalFooter>
       <button nz-button nzType="default" (click)="closeModal()">Fermer</button>
-      <button nz-button nzType="primary" (click)="sendMessage()">Envoyer</button>
+      <button nz-button nzType="primary" (click)="sendMessage()" [disabled]="!messageToSend">Envoyer</button>
     </div>
 
   </nz-modal>

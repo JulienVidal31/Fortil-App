@@ -23,6 +23,7 @@ export class AnnoncesMessageComponent {
   ) {}
 
   closeModal(): void {
+    this.messageToSend = '' //reinitialisation champs message
     this.onClose.emit();
   }
 
@@ -43,6 +44,7 @@ export class AnnoncesMessageComponent {
       } else if (response.status === 201) {
         this.msg.success(`Email envoyé avec succès à ${dataEmail.emailTarget}`)
         this.closeModal()
+
       }
     })
         

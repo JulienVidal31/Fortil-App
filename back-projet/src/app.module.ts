@@ -10,6 +10,8 @@ import { UploadsModule } from './module/uploads/uploads.module';
 import { AuthModule } from './module/auth/auth.module';
 import { UsersService } from './module/users/users.service';
 import { MailerModule } from './module/mailer/mailer.module';
+import { OfficeModule } from './module/office/office.module';
+import { ReservationsModule } from './module/reservations/reservations.module';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { MailerModule } from './module/mailer/mailer.module';
     UploadsModule,
     AuthModule,
     MailerModule,
+    OfficeModule,
+    ReservationsModule,
   ],
   controllers: [AppController],
   providers: [AppService]

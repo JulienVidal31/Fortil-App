@@ -30,6 +30,7 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
 import { UserInformationComponent } from './users/user-information/user-information.component';
 import { AnnonceByUserComponent } from './annonces/annonce-by-user/annonce-by-user.component';
 import { AnnoncesMessageComponent } from './annonces/annonces-message/annonces-message.component';
+import { OfficeComponent } from './office/office.component';
 
 registerLocaleData(fr);
 
@@ -49,7 +50,8 @@ registerLocaleData(fr);
     ResetPasswordConfirmationComponent,
     WelcomePageComponent,
     UserInformationComponent,
-    AnnonceByUserComponent
+    AnnonceByUserComponent,
+    OfficeComponent
   ],
   imports: [
     BrowserModule,

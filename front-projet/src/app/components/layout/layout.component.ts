@@ -14,10 +14,6 @@ export class LayoutComponent {
     readonly authService: AuthService
   ) {  }
   
-  goToAnnonces() {
-    this.router.navigate(['/annonces'])
-  }
-
   deconnexion() {
     localStorage.removeItem('token')
     this.router.navigate(['/signin'])

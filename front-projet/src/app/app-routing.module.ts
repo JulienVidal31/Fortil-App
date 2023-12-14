@@ -10,6 +10,7 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
 import { AuthGuard } from './auth/auth.guard';
 import { UserInformationComponent } from './users/user-information/user-information.component';
 import { AnnonceByUserComponent } from './annonces/annonce-by-user/annonce-by-user.component';
+import { OfficeComponent } from './office/office.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' }, //route par défaut, qd ouverture site
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'users', component: UserTableComponent },
   { path: 'user/info', component: UserInformationComponent },
   { path: 'user/annonces', component: AnnonceByUserComponent },
+  { path: 'office', component: OfficeComponent },
   // { path: '**', component: PageNotFoundComponent }, //** intercepte toutes les routes
 ];
 

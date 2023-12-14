@@ -1,0 +1,25 @@
+.plan-agence {
+    text-align: center;
+  }
+  
+  .offices {
+    display: grid;
+    grid-template-columns: repeat(5, 100px); /* Exemple de mise en page avec 5 bureaux par ligne */
+    gap: 20px;
+  }
+  
+  .office {
+    background-color: lightblue;
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  .office.reserve {
+    background-color: lightcoral; /* Couleur différente pour les bureaux réservés */
+  }
+
+  .reservedBy {
+    font-size: smaller;
+    font-style: italic;
+  }
+  

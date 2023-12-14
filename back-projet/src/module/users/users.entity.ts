@@ -1,5 +1,6 @@
 import { AnnoncesEntity } from 'src/module/annonces/annonces.entity';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { ReservationsEntity } from '../reservations/reservation.entity';
 
 @Entity('users')
 export class UsersEntity {
@@ -52,5 +53,9 @@ export class UsersEntity {
   annonces => annonces.id)
   annonces: AnnoncesEntity[];
 
+  @OneToMany( //un user peut etre associé à plusieurs réservations
+  type => ReservationsEntity,
+  reservations => reservations.id)
+  reservations: ReservationsEntity[];
 
 }

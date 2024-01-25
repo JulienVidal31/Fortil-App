@@ -4,7 +4,7 @@ import * as nodemailer from 'nodemailer'
 @Injectable()
 export class MailerService {
 
-    private async transporter () {
+    private async transporter () { //aller sur http://localhost:8025/ pour voir boite mail
         const testAccount = await nodemailer.createTestAccount()
         // console.log(testAccount)
         const transport = nodemailer.createTransport({

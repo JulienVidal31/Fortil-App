@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WelcomePageService } from './welcome-page.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,6 +8,7 @@ import { WelcomePageService } from './welcome-page.service';
   template: `
   <div nz-row>
     <div class="left-divider" nz-col nzSpan="6">
+      <h3 class="centered-text">{{ dynamicDate }}</h3>
       <div class="weather-card">
         <div class="weather-info">
           <img class="weather-logo" [src]="image_url" alt="Logo Météo">
@@ -32,6 +34,7 @@ export class WelcomePageComponent {
 
   meteoToulouseDatas!: any
   image_url!: any
+  dynamicDate!: string
 
   constructor(
     private welcomePageService: WelcomePageService, 
@@ -40,6 +43,9 @@ export class WelcomePageComponent {
   ngOnInit() {
     this.getMeteoToulouse()
     // console.log(this.meteoToulouseDatas.weather[0].description)
+    setInterval(() => {
+      this.dynamicDate = formatDate(new Date(),'EEEE dd/MM/yyyy HH:mm:ss', 'fr');
+    }, 1000);
   }
 
   getMeteoToulouse() {

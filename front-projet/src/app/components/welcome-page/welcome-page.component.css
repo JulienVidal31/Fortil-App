@@ -1,5 +1,11 @@
 /* app.component.css */
 
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .welcome-img {
   width: 50%;
   display: block;
@@ -43,7 +49,7 @@
   
   .weather-logo {
     max-width: 30%;
-    margin-right: 5px;
+    margin-right: 2px;
   }
   
   .weather-details {

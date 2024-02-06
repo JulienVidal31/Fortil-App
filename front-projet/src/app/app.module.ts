@@ -67,7 +67,7 @@ registerLocaleData(fr);
     { provide: NZ_I18N, useValue: fr_FR },
     UsersService,
     AuthService,
-    AnnoncesService
+    AnnoncesService,
   ],
   bootstrap: [AppComponent]
 })

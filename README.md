@@ -4,6 +4,8 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Fonctionnalités de l'application ###
 
+#### Fonctionnalités de l'application ####
+
 * Authentification :
 
 Connexion par email & mot de passe

@@ -5,8 +5,9 @@ This README would normally document whatever steps are necessary to get your app
 ### Fonctionnalités de l'application ###
 
 * Authentification :
-Connexion par email & mot de passe
-Inscription
+- [Connexion par email & mot de passe]
+[Connexion par email & mot de passe]
+- Inscription
 - Mot de passe oublié (réinitialisation du mdp par email)
 - Cryptage du mdp en base de données (Bcrypt)
 - A la connexion, stockage du token dans le localstorage

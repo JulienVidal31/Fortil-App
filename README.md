@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ## Fonctionnalités de l'application ##
 
 ### Authentification :
-- Connexion par email & mot de passe
+- Connexion par email & mot de passe (pour demo - login : julien.vidal@fortil.group / mdp : 12345)
 - Inscription
 - Mot de passe oublié (réinitialisation du mdp par email)
 - Cryptage du mdp en base de données (Bcrypt)
@@ -13,7 +13,7 @@ This README would normally document whatever steps are necessary to get your app
 - Déconnexion
 
 ### Annonces :
-- Consultation des annonces
+- Consultation des annonces + filtre par catégories
 - Vue du détail d'une annonce
 - Contact de l'annonceur par mail (utilisation de MailHog)
 - Consultation des annonces de l'utilisateur connecté

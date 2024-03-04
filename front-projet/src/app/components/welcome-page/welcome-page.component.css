@@ -42,9 +42,10 @@
   
   .weather-info {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-evenly; */
     align-items: center;
     margin: 10px;
+    text-align: left;
   }
   
   .weather-logo {
@@ -56,3 +57,11 @@
     text-align: left;
   }
   
+  .grid {
+    /* border: 1px solid #0a0909; */
+  }
+
+  h2, h3, h4, h5, h6 {
+    margin: 0; /* Annule la marge par défaut */
+    /* Ajoutez d'autres styles personnalisés au besoin */
+  }

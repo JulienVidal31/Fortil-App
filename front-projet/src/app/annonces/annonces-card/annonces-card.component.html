@@ -8,8 +8,8 @@
 </button>
 
 <nz-list nzGrid>
-  <div nz-row [nzGutter]="16">
-    <div nz-col [nzXXl]="7" [nzXl]="7" [nzLg]="6" [nzMd]="6" [nzSm]="12" [nzXs]="24" *ngFor="let annonce of annoncesFilteredList">
+  <div nz-row nzJustify="space-evenly">
+    <div class="card-annonce" *ngFor="let annonce of annoncesFilteredList">
       <nz-list-item>  
         <nz-card [nzCover]="coverTemplate" [nzActions]="[actionView, actionContact]">
           
@@ -26,7 +26,7 @@
           ></nz-card-meta>
     
           <ng-template #coverTemplate>
-            <div style="display: flex; justify-content: center; align-items: center; height: 150px;">
+            <div class="container-img">
               <img src="assets/images/{{ annonce.image }}" style="max-width: 100%; max-height: 100%;"/>
             </div>
           </ng-template>

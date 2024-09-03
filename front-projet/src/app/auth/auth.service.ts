@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   signup(signupData: Signup) {
-    return this.http.post<Signup>(`${environment.apiUrl}/auth/signup`, signupData).pipe(
+    return this.http.post<Signup>(`${environment.apiUrl}auth/signup`, signupData).pipe(
       tap((response) => this.log(response)), //on log la réponse, tap = console log pour Observable
       catchError((error) => this.handleError(error, error)) //on retourne Observable contenant erreur si erreur
       )
